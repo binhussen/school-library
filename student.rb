@@ -16,6 +16,4 @@ class Student < Person
   def add_classroom(classroom)
     classroom.students << self
   end
-
-  attr_reader :classroom
 end
