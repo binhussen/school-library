@@ -1,6 +1,3 @@
-require_relative './person'
-require_relative './decorator'
-
 person = Person.new(22, 'maximilianus')
 puts person.correct_name
 capitalized_person = CapitalizeDecorator.new(person)
