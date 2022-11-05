@@ -19,11 +19,11 @@ def main
       break
     end
 
-    choice(app,choice)
+    choice(app, choice)
   end
 end
 
-def choice(app,choice)
+def choice(app, choice)
   case choice
   when 1
     app.book_list

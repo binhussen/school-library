@@ -5,7 +5,7 @@ require_relative './rental'
 
 class App
   attr_reader :books, :people, :rentals
-  
+
   def initialize
     @books = []
     @people = []
@@ -90,8 +90,8 @@ class App
     if @people.empty?
       puts 'No people found!'
     else
-      @people.each_with_index do |person, i|
-        puts "#{i}) [#{person.class}] Name: #{person.name}, Age: #{person.age}, ID: #{person.id}"
+      @people.each_with_index do |person, index|
+        puts "#{index + 1}) [#{person.class}] Name: #{person.name}, Age: #{person.age}, ID: #{person.id}"
       end
     end
   end
@@ -106,7 +106,7 @@ class App
     print 'Date: '
     date = gets.chomp
 
-    rental = Rental.new(date, @books[book_index], @people[person_index])
+    rental = Rental.new(date, @books[book_index - 1], @people[person_index - 1])
     @rentals.push(rental)
     puts 'Rental created successfully'
   end
@@ -117,7 +117,7 @@ class App
     person_id = gets.chomp.to_i
     person = @people.select { |p| p.id == person_id }[0]
     person.rentals.each_with_index do |rental, index|
-      puts "#{index}) Book: #{rental.book.title}, Date: #{rental.date}"
+      puts "#{index + 1}) Book: #{rental.book.title}, Date: #{rental.date}"
     end
   end
 end
