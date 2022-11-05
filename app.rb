@@ -85,4 +85,39 @@ class App
       puts "#{index + 1}) Title: #{book.title}, Author: #{book.author}"
     end
   end
+
+  def people_list
+    if @people.empty?
+      puts 'No people found!'
+    else
+      @people.each_with_index do |person, i|
+        puts "#{i}) [#{person.class}] Name: #{person.name}, Age: #{person.age}, ID: #{person.id}"
+      end
+    end
+  end
+
+  def create_rental
+    puts 'Select a book from the following list by number'
+    book_list
+    book_index = gets.chomp.to_i
+    puts 'Select a person from the following list by number (not id)'
+    people_list
+    person_index = gets.chomp.to_i
+    print 'Date: '
+    date = gets.chomp
+
+    rental = Rental.new(date, @books[book_index], @people[person_index])
+    @rentals.push(rental)
+    puts 'Rental created successfully'
+  end
+
+  def rental_list
+    puts 'Enter ID of the person'
+    people_list
+    person_id = gets.chomp.to_i
+    person = @people.select { |p| p.id == person_id }[0]
+    person.rentals.each_with_index do |rental, index|
+      puts "#{index}) Book: #{rental.book.title}, Date: #{rental.date}"
+    end
+  end
 end
