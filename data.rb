@@ -29,4 +29,38 @@ class Data
     end
   end
 
+  def load_person
+    return [] unless File.size?('./data/person.json')
+    stored_person = JSON.parse(File.read('./data/person.json'))
+    stored_person.map do |person|
+      case person['type']
+      when 'student'
+        @person << Student.new(person['id'],nil, person['age'], person['name'], person['parent_permission'])
+      when 'teacher'
+        @person << Teacher.new(nil, person['specialization'],person['age'], person['name'])
+      end
+    end
+    @person
+  end
+
+  def create_person(person)
+    if File.size?('./data/person.json')
+      person_file = JSON.parse(File.read('./data/person.json'))
+      if person.instance_of? Student
+        person_file << { id: person.id, name: person.name, age: person.age, type: 'student', parent_permission: person.parent_permission}
+      else
+        person.instance_of? Teacher
+        person_file << { id: person.id, name: person.name, age: person.age, specialization: person.specialization, type: 'teacher' }
+      end
+      File.write('./data/person.json', JSON.pretty_generate(person_file))
+    else
+      if person.instance_of? Student
+        user_file = { id: person.id, name: person.name, age: person.age, parent_permission: person.parent_permission, type: 'student' }
+      else
+        person.instance_of? Teacher
+        user_file = { id: person.id, name: person.name, age: person.age, specialization: person.specialization, type: 'teacher' }
+      end
+      File.write('./data/person.json', JSON.pretty_generate([user_file]))
+    end
+  end
 end
