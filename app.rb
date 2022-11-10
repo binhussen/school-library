@@ -10,8 +10,8 @@ class App
   def initialize
     @data = Data.new
     @books = @data.load_books
-    @people = []
-    @rentals = []
+    @people = @data.load_person
+    @rentals = @data.load_rentals
   end
 
   def create_person
@@ -51,8 +51,9 @@ class App
     name = gets.chomp
     parent_permission = permission?
 
-    student = Student.new(nil,nil, age, name, parent_permission)
+    student = Student.new(nil, nil, age, name, parent_permission)
     @people.push(student)
+    @data.create_person(student)
     puts 'Person created successfully'
   end
 
@@ -66,6 +67,7 @@ class App
 
     teacher = Teacher.new(nil, specialization, age, name)
     @people.push(teacher)
+    @data.create_person(teacher)
     puts 'Person created successfully'
   end
 
@@ -75,7 +77,7 @@ class App
     print 'Author: '
     author = gets.chomp
 
-    book = Book.new(nil,title, author)
+    book = Book.new(nil, title, author)
     @books.push(book)
     @data.create_book(book)
     puts 'Book created successfully'
@@ -110,6 +112,8 @@ class App
     date = gets.chomp
 
     rental = Rental.new(date, @books[book_index - 1], @people[person_index - 1])
+    @data.create_rental(rental)
+
     puts 'Rental created successfully'
   end
 
