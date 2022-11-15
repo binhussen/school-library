@@ -86,7 +86,7 @@ class Data
     if File.size?('./data/rental.json')
       rentals_file = JSON.parse(File.read('./data/rental.json'))
       rentals_file << { date: rental.date, book: rental.book.id, person: rental.person.id }
-      File.write('./data/rentals.json', JSON.pretty_generate(rentals_file))
+      File.write('./data/rental.json', JSON.pretty_generate(rentals_file))
     else
       File.write('./data/rental.json',
                  JSON.pretty_generate([{ date: rental.date, book: rental.book.id, person: rental.person.id }]))
