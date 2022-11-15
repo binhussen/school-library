@@ -58,6 +58,12 @@ ruby person.rb
 - Twitter: [@binhussens](https://twitter.com/binhussens)
 - LinkedIn: [Linkedin](https://www.linkedin.com/in/binhussen/)
 
+👤 **Abdelhadi Hireche (aeh1707)**
+
+- GitHub: [@aeh1707](https://github.com/aeh1707)
+- Twitter: [@aeh1707](https://twitter.com/aeh1707)
+- LinkedIn: [abdelhadi-hireche](https://www.linkedin.com/in/abdelhadi-hireche/)
+
 ## 🤝 Contributing
 Contributions, issues, and feature requests are welcome!
 Feel free to check the [issues page](../../issues/).
