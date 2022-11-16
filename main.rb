@@ -1,8 +1,8 @@
-require_relative './app'
+require_relative './select'
 
 def main
   puts 'Welcome to School Library App!'
-  app = App.new
+  select = Select.new
   loop do
     puts "\nPlease choose an option by enetering a number:"
     puts '1 - List all books'
@@ -19,27 +19,7 @@ def main
       break
     end
 
-    choice(app, choice)
+    select.choice(choice)
   end
 end
-
-def choice(app, choice)
-  case choice
-  when 1
-    app.book_list
-  when 2
-    app.people_list
-  when 3
-    app.create_person
-  when 4
-    app.create_book
-  when 5
-    app.create_rental
-  when 6
-    app.rental_list
-  else
-    puts 'Invalid input'
-  end
-end
-
 main

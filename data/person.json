@@ -1,0 +1,23 @@
+[
+  {
+    "id": 989,
+    "name": "Edi",
+    "age": 23,
+    "type": "student",
+    "parent_permission": true
+  },
+  {
+    "id": 68,
+    "name": "Mohammed",
+    "age": 24,
+    "specialization": "Software Eng",
+    "type": "teacher"
+  },
+  {
+    "id": 771,
+    "name": "Abdelhadi",
+    "age": 25,
+    "type": "student",
+    "parent_permission": false
+  }
+]
